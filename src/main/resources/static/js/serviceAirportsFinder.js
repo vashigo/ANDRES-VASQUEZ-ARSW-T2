@@ -11,7 +11,7 @@ function searchCityAiportsFinder(){
          area =$('#data');
         selectedCity=$('#city').val();
     
-        var url="https://localhost:8080/AirportsFinder/"+selectedCity
+        var url="https://andres-vasquez-arsw-t2.herokuapp.com/AirportsFinder/"+selectedCity
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", url, false); // false for synchronous request
         xmlHttp.send(null);
