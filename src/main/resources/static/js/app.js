@@ -1,7 +1,6 @@
 var app = (function () {
 
-    var map;
-    var m = [];
+    var res = [];
 
     var getAirports = function (locationName) {
         var getPromise = $.get("/AirportsFinder/"+"{"+locationName+"}");
@@ -13,7 +12,7 @@ var app = (function () {
                 JSON.parse(data).map(function (value, index) {
                     var toAdd = '<tr><td>'+value.code+'</td><td>'+value.name+'</td><td>'+value.city+'</td><td>'+value.countryCode+'</td></tr>'
                     $("#listAirports tbody").append(toAdd);
-                    m.push(value.location);
+                    res.push(value.location);
                 });
 
             },
@@ -22,9 +21,8 @@ var app = (function () {
             }
         );
         return getPromise;
-
-
     };
+
 
     return {
 
@@ -32,7 +30,7 @@ var app = (function () {
             var locationName =  document.getElementById("locationInput").value;
 
             getAirports(locationName).then(function () {
-                document.getElementById("map").style.display = "block";
+                document.getElementById("map").style.display = "inline-flex";
 
             });
 
